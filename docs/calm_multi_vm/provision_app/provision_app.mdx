@@ -1,0 +1,95 @@
+---
+title: "Provision application"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.2.0 on PC7.3
+2.  Infrastructure cluster on AOS 7.3 on PC7.3
+
+## Objectives:
+
+The objectives of this lab is to understand the lifecycle of the HAProxy Apache application
+
+1.  Provision the HAProxy Apache Application from the marketplace <br/>
+2.  Day 2 action to scale out and scale in <br/>
+
+## Provision HAProxy Apache applications from the marketplace
+
+1. On the left side of the screen, click on **Marketplace**
+
+    ![](images/ProvisionApp-1.png)
+
+2.  Click on **GET** in **ApacheRHEL** to launch the HAProxy Apache Application
+
+    ![](images/ProvisionApp-2.png)
+
+3.  Click on **Deploy**
+
+    ![](images/ProvisionApp-3.png)
+
+4.  Fill in the following:
+
+a.  Application Name:  Apache-**Trainee Name** <br/>
+b.  Environment: **Choose the environment assigned to you as specified in the lab sheet** <br/>
+
+     ![](images/ProvisionApp-4.png)
+
+5.  Scroll down.  Observe the **application profile**.  Application Profile allows the blueprint designer
+to design T-shirt sizing or cloud (AWS, Azure, GCP, VMware) in the blueprint.
+
+    ![](images/ProvisionApp-5.png)
+
+6.  Scroll down.  Observe the default VM sizing defined for the Apache Service.  The value is editable.
+**Do not change the value for this lab.**
+
+    ![](images/ProvisionApp-6.png)
+
+7.  Scroll down.  Every VM is provisioned using an AHV disk image.
+
+    ![](images/ProvisionApp-7.png)
+
+8.  Scroll down and observe likewise for HAProxy.  Click on **Deploy**
+
+    ![](images/ProvisionApp-8.png)
+
+9.  Click **View in Application**.
+
+    ![](images/ProvisionApp-9.png)
+
+10.  The application provisioning is estimated to take 5 to 10 mins.  Have a coffee break
+
+    ![](images/ProvisionApp-10.png)
+
+11.  Click on **Audit**
+
+    ![](images/ProvisionApp-11.png)
+
+12.  The application is provisioned successfully
+
+    ![](images/ProvisionApp-12.png)
+
+
+## Verify the HAProxy Apache applications
+
+1.  Click on **Services**.  Observe both the Apache and HAProxy Services were provisioned.  
+Click on the **>** icon in **Apache Service** to expand the Apache service
+
+    ![](images/VerifyApp-1.png)
+
+2.  Observe 3 Apache web servers are provisioned.  
+
+    ![](images/VerifyApp-2.png)
+
+3.  On the right hand side of the screen, the **Apache** Service IP addresses are shown.
+
+    ![](images/VerifyApp-3.png)
+
+4.  Click on **HAProxy** service.  Observe the **HAProxy** Service IP address is shown
+
+    ![](images/VerifyApp-4.png)
+
+5.  Open a new browser window.  Put in the **HAProxy** IP address.  Observe the page as shown below
+
+    ![](images/VerifyApp-5.png)
+

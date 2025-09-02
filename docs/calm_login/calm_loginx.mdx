@@ -1,0 +1,41 @@
+---
+title: "Lab Login"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.2.0 on PC7.3
+2.  Infrastructure cluster on AOS 7.3 on PC7.3
+
+## Role Based Access in Project
+
+Both configurations (NCM Self Service VM and NCM Self Service in Prism Central) leverages on the built in roles provided in Prism Central.  These are 
+the specific role available for NCM Self Service
+
+     ![](images/rbac-1.png)
+
+## Active Directory
+
+The AD services for the **NTNXLAB1.local** domain. The domain is populated with the following Users and Groups.  Replace XYZ with the username and password provided by the leader of the workshop
+
+
+| Group                 | Role                   | Username(s)         |
+|-----------------------| ---------------------------------------------|
+| SSPAdmin              | Self-Service Admin     | sspXYZadmin         | 
+| SSPProjectAdmin       | Project Admin          | tenantXYZprojadmin  | 
+| SSPDeveloper          | Consumer               | tenantXYZdeveloper  | 
+| SSPBPDeveloper        | Developer              | tenantXYZBPdeveloper|
+
+
+## Login Page of the Calm VM
+
+ Logging into the Calm VMs is the entry point for the lab.  Please refer to the Google spreadsheet provided by the leader 
+ of the lab for both the url and login credential.  All login are using domain credential unless otherwise stated.
+
+1.  Login using SSP Admin username provided in the Google spreadsheet.  An example is ssp1admin@ntnxlab1.local  
+  
+  ![](images/login.png)
+
+2.  This picture is an example of successful login 
+
+  ![](images/login-success.png)

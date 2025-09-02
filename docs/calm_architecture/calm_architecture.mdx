@@ -7,7 +7,7 @@ title: "Lab Architecture"
 1.  Calm VM 4.2.0 on PC7.3
 2.  Infrastructure cluster on AOS 7.3 on PC7.3
 
-## Lab Architecture
+# Lab Architecture
 
 The lab architecture comprises of the following components:
 
@@ -18,25 +18,38 @@ The lab architecture comprises of the following components:
 
 The lab may be setup where the VMs are either provisioned into VLAN or VPC.  Please check with the leader of the lab.
 
-### Lab Architecture where VMs are provisioned into VLAN
+## Lab Architecture where VMs are provisioned into VLAN
 
  ![](images/architecture-vlan.png)
 
-### Lab Architecture where VMs are provisioned into VPC
+## Lab Architecture where VMs are provisioned into VPC
 
  ![](images/architecture-vpc.png)
 
- ### Login Page of the Calm VM
+# Three/Four node HPOC clusters
 
- Logging into the Calm VMs is the entry point for the lab.  Please refer to the Google spreadsheet provided by the leader 
- of the lab for both the url and login credential.  All login are using domain credential unless otherwise stated.
+Three or four node Hosted POC clusters follow a standard naming convention depending on where it is based. 
 
-1.  Login using SSP Admin username provided in the Google spreadsheet.  An example is ssp1admin@ntnxlab1.local  
-  
-  ![](images/login.png)
+For example for PHX based clusters
 
-2.  This picture is an example of successful login 
+- **Cluster Name** - PHX-POC024
+- **Subnet** - 10.42.24.0
+- **Cluster IP** - 10.42.24.37 for the VIP of the Cluster
 
-  ![](images/login-success.png)
+For example for DM3 based clusters
 
+- **Cluster Name** - DM3-POC024
+- **Subnet** - 10.55.24.0
+- **Cluster IP** - 10.55.24.37 for the VIP of the Cluster
+
+Each cluster is configured with 2 VLANs which can be used for VMs:
+
+
+|Network Name        | Address             | VLAN    | DHCP Scope |
+|------------------- | ------------------- |-------- | -----------|
+|Primary_xx          | 10.*ABC*.*XYZ*.1/25    | 0       | 10.*ABC*.*XYZ*.40-10.*ABC*.*XYZ*.99|
+|Secondary_xx        | 10.*ABC*.*XYZ*.129/25  | *XYZ1*  | 10.*ABC*.*XYZ*.140-10.*ABC*.*XYZ*.250|
+
+
+ 
 

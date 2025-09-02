@@ -1,0 +1,24 @@
+---
+title: "Multi-VM: Wordpress Application"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.2.0 on PC7.3
+2.  Infrastructure cluster on AOS 7.3 on PC7.3
+
+# Multi-VM Wordpress Application
+
+The application in this lab comprises of 1 HAProxy and 3 no of Apache Web Servers.  The no of Apache server can be scale out or scale in 
+according to the demand.
+
+    ![](images/Refresh-App.png)
+
+NCM Self Service blueprint is the foundation component to provide the lifecycle management of this application.
+
+1. Provision the Applications
+2. Start, Stop or Delete the Applications
+3. Scale out/Scale In the Application
+
+    ![](images/Refresh-App-2.png)
+

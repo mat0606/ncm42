@@ -2,7 +2,7 @@ module.exports = {
   tutorialSidebar:[
     {
       type: 'category',
-      label: 'NCM Self Service 101',
+      label: 'Lab Environment',
       items: ['intro',
               'calm_architecture/calm_architecture',
               'calm_login/calm_login',

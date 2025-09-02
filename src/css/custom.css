@@ -28,3 +28,66 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Container: keeps wide tables usable on mobile */
+.table-wrap {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Base table styling uses Docusaurus/Infima variables for auto theming */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  border: 1px solid var(--ifm-toc-border-color);
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 0.75rem 0.9rem;
+  border-top: 1px solid var(--ifm-toc-border-color);
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+
+.custom-table th:last-child,
+.custom-table td:last-child { border-right: none; }
+
+.custom-table thead th {
+  background: var(--ifm-table-head-background);
+  font-weight: 600;
+}
+
+/* Zebra striping that respects theme */
+.custom-table tbody tr:nth-child(even) {
+  background: var(--ifm-color-emphasis-0);
+}
+
+/* Hover highlight */
+.custom-table tbody tr:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* Priority pills */
+.pill {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+  line-height: 1.2;
+}
+
+/* Use semantic theme variables so colors adapt in dark mode */
+.pill--high { color: var(--ifm-color-danger); }
+.pill--med  { color: var(--ifm-color-warning); }
+.pill--low  { color: var(--ifm-color-success); }
+
+/* Optional: subtle tweak for very dark themes */
+html[data-theme='dark'] .table-wrap {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}

@@ -1,47 +1,95 @@
 ---
-sidebar_position: 1
+description: Create a doc page with rich content.
 ---
+# Getting Started {#getting_started}
 
-# Tutorial Intro
+Welcome to the NCM Self Service Workshop.
 
-Let's discover **Docusaurus in less than 5 minutes**.
 
-## Getting Started
+## Agenda
 
-Get started by **creating a new site**.
+- NCM Self Service 101
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Initial Setup
 
-### What you'll need
+- Take note of the *Passwords* being used from you RX reservation details
+- Log into your virtual desktops (connection info below)
+- Login to Global Protect VPN if you have access
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Cluster Assignment
 
-## Generate a new site
+The instructor will inform the attendees their assigned clusters.
 
-Generate a new Docusaurus site using the **classic template**.
+## Environment Details
 
-The classic template will automatically be added to your project after you run the command:
+Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. Your cluster will be provisioned with all necessary images,networks, and VMs required to complete the exercises.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+#### Three/Four node HPOC clusters
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+Three or four node Hosted POC clusters follow a standard naming convention depending on where it is based. 
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+For example for PHX based clusters
 
-## Start your site
+- **Cluster Name** - PHX-POC024
+- **Subnet** - 10.42.24.0
+- **Cluster IP** - 10.42.24.37 for the VIP of the Cluster
 
-Run the development server:
+For example for DM3 based clusters
 
-```bash
-cd my-website
-npm run start
-```
+- **Cluster Name** - DM3-POC024
+- **Subnet** - 10.55.24.0
+- **Cluster IP** - 10.55.24.37 for the VIP of the Cluster
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Each cluster is configured with 2 VLANs which can be used for VMs:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+|Network Name        | Address             | VLAN    | DHCP Scope |
+|------------------- | ------------------- |-------- | -----------|
+|Primary_xx          | 10.*ABC*.*XYZ*.1/25    | 0       | 10.*ABC*.*XYZ*.40-10.*ABC*.*XYZ*.99|
+|Secondary_xx        | 10.*ABC*.*XYZ*.129/25  | *XYZ1*  | 10.*ABC*.*XYZ*.140-10.*ABC*.*XYZ*.250|
+
+### Credentials
+
+:::note
+
+The *Cluster Password* is unique to each cluster and will be provided by the leader of the Workshop.
+
+:::
+
+### Active Directory
+
+The AD services for the **NTNXLAB1.local** domain. The domain is populated with the following Users and Groups.  Replace XYZ with the username and password provided by the leader of the workshop
+
+
+| Group                 | Role                   | Username(s)         |
+|-----------------------| ---------------------------------------------|
+| SSPAdmin              | Self-Service Admin     | sspXYZadmin         | 
+| SSPProjectAdmin       | Project Admin          | tenantXYZprojadmin  | 
+| SSPDeveloper          | Consumer               | tenantXYZdeveloper  | 
+| SSPBPDeveloper        | Developer              | tenantXYZBPdeveloper|
+
+
+## Access Instructions
+
+The Nutanix Hosted POC environment can be accessed a number of different ways:
+
+### Lab Access User Credentials
+
+PHX Based Clusters: 
+
+- **Username:** PHX-POCxxx-User01 (up to PHX-POCxxx-User20), 
+- **Password:** *Provided by Instructor*
+
+DM3 Based Clusters: 
+
+- **Username:** DM3-POCxxx-User01 (up to DM3-POCxxx-User20), 
+- **Password:** *Provided by Instructor*
+
+### Parallels VDI
+
+PHX Based Clusters Login to: https://xld-uswest1.nutanix.com
+
+DM3 Based Clusters Login to: https://dm3-ras.xlabs.nutanix.com
+
+**Nutanix Employees** - Use your **NUTANIXDC** credentials
+**Non-Employees** - Use **Lab Access User** Credentials

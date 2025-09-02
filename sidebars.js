@@ -4,6 +4,7 @@ module.exports = {
       type: 'category',
       label: 'NCM Self Service 101',
       items: ['what_is_calm/what_is_calm',
+              'calm_architecture/calm_architecture',
               'calm_project/calm_project',
               'calm_project/calm_environment',
               'calm_project/snapshot_policy_project',

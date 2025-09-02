@@ -1,0 +1,158 @@
+---
+title: "Project"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.1.0 on PC2024.3.1
+2.  Infrastructure cluster on AOS 7.0.5 on PC2024.3.1
+
+## What is a Project
+
+Project is the logical construct that allowed an administrator to assign both infrastructure resources and the roles/permissions of Active Directory users/groups to specific Blueprints and Applications.
+
+# Create a Project
+
+1.  Login to the Calm VM using the admin user.
+
+2.  Click on **Hamburger Menu**.  Select **Admin Center**
+
+    ![](images/AppSwitcher-AdminCenter.png)
+
+3.  Click on **Projects** 
+
+    ![](images/Admin-Center-Project.png)
+
+
+4.  Click on **Create Project**.
+
+    ![](images/Create-Project.png)
+
+5.  Fill in the Project Name. Eg TenantProject-TraineeNo. Click on
+    **Create**.
+
+    ![](images/Create-Project-1.png)
+
+6.  This project is in the **Pending** state.  
+
+    ![](images/Create-Project-2.png)
+
+## Role Based Access in Project
+
+Both configurations (NCM Self Service VM and NCM Self Service in Prism Central) leverages on the built in roles provided in Prism Central.  These are 
+the specific role available for NCM Self Service
+
+     ![](images/rbac-1.png)
+
+## Create user in Project
+
+1.  Click on **Users and Groups**
+
+    ![](images/Create-User-1.png)
+
+2.  Click on **Add/Edit Users and Groups**
+
+    ![](images/Create-User-2.png)
+
+3.  Click on **+ Add User** 
+
+    ![](images/Create-User-3.png)
+
+4.  Fill in the following.  Replace **XYZ** with your trainee no
+
+    - Name: tenant**XYZ**projadm
+    - Role: Project Admin
+
+    ![](images/Create-User-4.png)
+
+5.  Add another user.  Replace **XYZ** with your trainee no
+
+    - Name: tenant**XYZ**developer
+    - Role: Consumer
+
+    ![](images/Create-User-5.png)
+
+6.  Add another user for the Blueprint Designer.  Replace **XYZ** with your trainee no
+
+    - Name: tenant**XYZ**BPdeveloper
+    - Role: Developer
+
+    ![](images/Create-User-6.png)
+
+7.  Click on **Save Users and Project**
+
+## Add Infrastructure in Project
+
+1.  Click on **Infrastructure**.  
+
+2. Click on **Add Infrastructure**. Select **NTNX_LOCAL_AZ_xx** as assigned by the trainer
+
+    ![](images/Create-Project-3.png)
+
+3.  Click on **Configure Resources**. 
+
+    ![](images/Create-Project-4.png)
+
+4.  Click on **Select Cluster**.  Click on **Select VLANs**
+
+    ![](images/Create-Project-5.png)
+
+5.  Check on **Primary_xx** or **Secondary_xx** Network as assigned by the trainer.  
+
+    ![](images/Create-Project-6.png)
+
+### No VPC in the cluster
+
+1.  This section is for cluster not configured with VPC.  Please scroll down to **Configure VPC to the project** for cluster configured with VPC.
+
+2.  Click **Confirm**
+
+    ![](images/Create-Project-7.png)
+
+3.  Click **Confirm**
+
+    ![](images/Create-Project-8.png)
+
+4.  Click **Save**   
+
+    ![](images/Create-Project-9.png)
+
+5.  The project is in the **Active** state
+
+    ![](images/Create-Project-10.png)
+
+### Configure VPC to the project 
+
+1.  This section is for cluster configured with VPC.  **Please check with the trainer**
+
+2.  Select **VPCs & Subnets**
+
+    ![](images/project-vpc-2022-6.png)
+
+3.  Select **VPC**. Select the Overlay Subnet **SG-AMK** Network. Click
+    on **Confirm**.
+
+    ![](images/project-vpc-2022-6.png)
+
+4.  Select **Confirm**.
+
+    ![](images/project-vpc-confirm-pc2022-6.png)
+
+5.  Click on **Save**
+
+    ![](images/project-infrastructure-save-pc2022-6.png)
+
+## Configure Quota in Project
+
+1.  Configure this section to configure the quota allocated to this project.
+
+2.  Check the **Quotas**.  Fill in the following:
+
+    - 100 vCPU
+    - 300 GB Memory
+    - 1000 GB Disk
+
+    ![](images/Quota.png)
+
+3.  Click on **Save**
+

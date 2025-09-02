@@ -1,0 +1,47 @@
+---
+title: "Snapshot Policy in Project"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.1.0 on PC2024.3.1
+2.  Infrastructure cluster on AOS 7.0.5 on PC2024.3.1
+
+# Snapshot Policy
+
+The objective of the snapshot policy allows the Tenant Project Administrator to clean up the snapshots taken by the
+tenant developer after the expiry period.  The Tenant Project Administrator may choose to configure the snapshot policy 
+to take the snapshot locally or replicate the snapshot to a DR site for business critical Applications
+
+# Configure Snapshot Policy in Project
+
+1.  Click on **Policies**
+
+    ![](images/snapshot_policy_1.png)
+
+2.  Click on **Snapshot**
+
+    ![](images/snapshot_policy_2.png)
+
+3.  Click on **Create Snapshot Policy**
+
+    ![](images/snapshot_policy_3.png)
+
+4.  Fill in the policy name.
+
+    ![](images/snapshot_policy_4.png)
+
+5.  Scroll down.  Fill in the **Snapshot Expiry Day** to 3 for the **Local Snapshot Policy**
+
+    ![](images/snapshot_policy_5.png)
+
+6.  Do not enable the **Remote Snapshot Policy**.  Click on **Save Snapshot Policy**
+
+    ![](images/snapshot_policy_6.png)
+
+7.  The Snapshot Policy was created successfully
+
+    ![](images/snapshot_policy_7.png)
+
+
+

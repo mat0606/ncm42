@@ -10,10 +10,11 @@ title: "Project"
 ## What is a Project
 
 Project is the logical construct that allowed an administrator to assign both infrastructure resources and the roles/permissions of Active Directory users/groups to specific Blueprints and Applications.
+Project also play cruical roles to segregate the infrastructure resources to different tenants or team
 
 # Create a Project
 
-1.  Login to the Self Service VM using the Project Admin user.
+1.  Login to the Self Service VM using the SSP Admin user provided in the Google spreadsheet.  An example is ssp20admin@ntnxlab1.local  
 
 2.  Click on **Hamburger Menu**.  Select **Admin Center**
 
@@ -80,79 +81,4 @@ the specific role available for NCM Self Service
     ![](images/Create-User-6.png)
 
 7.  Click on **Save Users and Project**
-
-## Add Infrastructure in Project
-
-1.  Click on **Infrastructure**.  
-
-2. Click on **Add Infrastructure**. Select **NTNX_LOCAL_AZ_xx** as assigned by the trainer
-
-    ![](images/Create-Project-3.png)
-
-3.  Click on **Configure Resources**. 
-
-    ![](images/Create-Project-4.png)
-
-4.  Click on **Select Cluster**.  Click on **Select VLANs**
-
-    ![](images/Create-Project-5.png)
-
-5.  Check on **Primary_xx** or **Secondary_xx** Network as assigned by the trainer.  
-
-    ![](images/Create-Project-6.png)
-
-### No VPC in the cluster
-
-1.  This section is for cluster not configured with VPC.  Please scroll down to **Configure VPC to the project** for cluster configured with VPC.
-
-2.  Click **Confirm**
-
-    ![](images/Create-Project-7.png)
-
-3.  Click **Confirm**
-
-    ![](images/Create-Project-8.png)
-
-4.  Click **Save**   
-
-    ![](images/Create-Project-9.png)
-
-5.  The project is in the **Active** state
-
-    ![](images/Create-Project-10.png)
-
-### Configure VPC to the project 
-
-1.  This section is for cluster configured with VPC.  **Please check with the trainer**
-
-2.  Select **VPCs & Subnets**
-
-    ![](images/project-vpc-2022-6.png)
-
-3.  Select **VPC**. Select the Overlay Subnet **SG-AMK** Network. Click
-    on **Confirm**.
-
-    ![](images/project-vpc-2022-6.png)
-
-4.  Select **Confirm**.
-
-    ![](images/project-vpc-confirm-pc2022-6.png)
-
-5.  Click on **Save**
-
-    ![](images/project-infrastructure-save-pc2022-6.png)
-
-## Configure Quota in Project
-
-1.  Configure this section to configure the quota allocated to this project.
-
-2.  Check the **Quotas**.  Fill in the following:
-
-    - 100 vCPU
-    - 300 GB Memory
-    - 1000 GB Disk
-
-    ![](images/Quota.png)
-
-3.  Click on **Save**
 

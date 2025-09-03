@@ -13,7 +13,7 @@ module.exports = {
       label: 'Project',
       items: ['calm_project/calm_project',
               'calm_project/calm_infrastructure',
-              'calm_quota/calm_quota',
+              'calm_project/calm_quota',
               'calm_project/calm_environment',
               'calm_project/snapshot_policy_project',                                
             ],

@@ -8,11 +8,18 @@ import Link from '@docusaurus/Link';
 1.  NCM Self Service VM 4.2.0 on PC7.3
 2.  Infrastructure cluster on AOS 7.3 on PC7.3
 
-# Configure the Environment in Project
+# Purpose of Environment
 
 The environment play a critical role to allow the **Consumer** role user to launch a marketplace item with 
 pre-defined hardware specification, guest customization and credentials required in the execution of the 
 marketplace blueprint.
+
+It is quite common for every environment (DEV, SIT, UAT and Production) to have different credential.  
+A single blueprint or marketplace item can be deployed to different environment substituting different
+credentials NCM Self Service requires to automate in the enviroment.
+
+# Configure the Environment in Project
+
 
 1.  Click on **Environments**
 
@@ -101,7 +108,7 @@ marketplace blueprint.
 7.  Create the credential for **CalmVM Credential**. Fill out the following fields:
 
     -   **Credential Name** - CalmVM Credential
-    -   **Username** - admin
+    -   **Username** - **Use SSP Admin username** Eg.  ssp20admin@ntnxlab1.local
     -   **Secret Type** - Password
     -   **Password** - Request from the trainer
 

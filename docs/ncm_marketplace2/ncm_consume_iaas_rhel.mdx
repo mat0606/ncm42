@@ -21,72 +21,49 @@ title: "IaaS: RedHat Marketplace Item"
 
 3.  Click on **Marketplace** on the left hand pane.
 
-4.  Both **Install AD and DNS** and **NKP** blueprints are not published to this project.  It is to
- illustrate it is possible to assign multiple marketplace Items to the project.  Click on **Get** 
- for **RHEL 10 Linux**.  
+4.  Click on **Get** for **RHEL 10 Linux**.  
 
     ![](images/marketplace-rhel.png)
 
 5.  Click on **Deploy**
 
-    ![](images/marketplace-launch-4.png)
+    ![](images/marketplace-launch-4-iaas.png)
 
 6.  Fill in the following:
 
-    - **Application Name:** Wordpress-XYZ where XYZ is your assigned trainee no
+    - **Application Name:** RHEL-XYZ where XYZ is your assigned trainee no
     - **Project:** Select the project created earlier
     - **Environment:** Select the environment created earlier
 
-   ![](images/marketplace-launch-5.png)
+   ![](images/marketplace-launch-5-iaas.png)
 
-7.  Scroll down.  Fill in the following.  Click on **Deploy**
+7.  Click on the **Application Profile** for T shirt sizing.  Choose **Medium**
 
-    - **App Profile:** Nutanix
-    - **WP_DB_PASSWORD:** Nutanix
-    - **MYSQL_PASSWORD:** Nutanix
+    ![](images/marketplace-launch-6-iaas.png)
 
-    ![](images/marketplace-launch-6.png)
+8.  Observe the VM sizing had changed.  Choose **Small** again to conserve resource.
+
+    ![](images/marketplace-launch-7-iaas.png)
+
+9.  Observe the disk image is not editable to prevent tenant changing the version.
+
+    ![](images/marketplace-launch-8-iaas.png)
+
+10.  NCM Self Service auto-patch the credential.  Explicit mapping is not necessary.  Click on **Deploy**
+
+    ![](images/marketplace-launch-9-iaas.png)
 
 8.  Click on **View in Admin Center**
 
     ![](images/marketplace-launch-7.png)
 
-9.  The application is in the **Provisioning** state.  It will takes an estimated 5 to 10 minutes to 
+9.  The application is in the **Provisioning** state.  It will takes an estimated 5 minutes to 
 
-    - Provision 1 HAProxy, 2 Apache Web Server & MySQL VM
-    - Install the software in the respective VM
+    - Provision RHEL 10 VM
+    - Install Software Package to join Active Directory Domain
 
 10.  Click on **Audit**
 
-    ![](images/marketplace-launch-8.png)
-
-12.  Observe the audit to see the dependency in the startup.
-
-    - MySQL service starts first.
-    - Apache services starts next
-    - HAProxy service start last
+    ![](images/marketplace-launch-10.png)
 
 13.  Wait till the application is in the **Running** state
-
-## Verification
-
-1.  Click on **Services**
-
-    ![](images/marketplace-wp-1.png)
-
-2.  Click on **HAProxy**
-
-    ![](images/marketplace-wp-1.png)
-
-3.  Observe the service on the right side of the screen.  Click on **IP Address**
-
-    ![](images/marketplace-wp-3.png)
-
-4.  Open a new browser tab.  Put in the **IP Address**
-
-    ![](images/marketplace-wp-4.png)
-
-
-
-
-

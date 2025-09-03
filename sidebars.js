@@ -12,6 +12,7 @@ module.exports = {
       type: 'category',
       label: 'Project',
       items: ['calm_project/calm_project',
+              'calm_project/calm_infrastructure',
               'calm_project/calm_environment',
               'calm_project/snapshot_policy_project',                                
             ],

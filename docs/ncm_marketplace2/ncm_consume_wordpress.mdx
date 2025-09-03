@@ -1,0 +1,76 @@
+---
+title: "Wordpress Marketplace Item"
+---
+
+# Product Configurations:
+
+1.  Calm VM 4.2.0 on PC7.3
+2.  Infrastructure cluster on AOS 7.3 on PC7.3
+
+# Consume Wordpress Marketplace item
+
+1.  Logout of Self Service VM.  Login as tenant**XYZ**developer@ntnxlab1.local user.  Replace XYZ with your assigned no in the Google spreadsheet
+
+    ![](images/marketplace-launch-1.png)
+
+2.  Click on hamburger menu.  Click on **Self Service**
+
+    ![](images/appswitcher-self-service.png)
+
+3.  Click on **Marketplace**
+
+    ![](images/marketplace-launch-3.png)
+
+4.  Click on **Wordpress**
+
+    ![](images/marketplace-wordpress.png)
+
+5.  Click on **Deploy**
+
+    ![](images/marketplace-launch-4.png)
+
+6.  Fill in the following:
+
+    - **Application Name:** Wordpress-XYZ where XYZ is your assigned trainee no
+    - **Project:** Select the project created earlier
+    - **Environment:** Select the environment created earlier
+
+   ![](images/marketplace-launch-5.png)
+
+7.  Scroll down.  Fill in the following.  Click on **Deploy**
+
+    - **App Profile:** Nutanix
+    - **WP_DB_PASSWORD:** Nutanix
+    - **MYSQL_PASSWORD:** Nutanix
+
+    ![](images/marketplace-launch-6.png)
+
+8.  Click on **View in Admin Center**
+
+    ![](images/marketplace-launch-7.png)
+
+9.  The application is in the **Provisioning** state.  It will takes an estimated 5 to 10 minutes to 
+
+    - Provision 1 HAProxy, 2 Apache Web Server & MySQL VM
+    - Install the software in the respective VM
+
+10.  Click on **Audit**
+
+    ![](images/marketplace-launch-8.png)
+
+12.  Observe the audit to see the dependency in the startup.
+
+    - MySQL service starts first.
+    - Apache services starts next
+    - HAProxy service start last
+
+13.  Wait till the application is in the **Running** state
+
+## Verification
+
+1.  Click on **Services**
+
+
+
+
+

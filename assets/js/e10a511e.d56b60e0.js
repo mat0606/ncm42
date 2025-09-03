@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkncm_42=self.webpackChunkncm_42||[]).push([[700],{29677:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/ncm42/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

@@ -1,0 +1,442 @@
+---
+title: "Linux Workload: Single-VM Blueprint"
+---
+
+# Product Configurations:
+
+1.  Calm VM 3.8.0 on PC2024.1
+2.  Infrastructure cluster on AOS 6.8.0.5 on PC2024.1.01
+
+# Overview
+
+:::info
+
+Estimated time to complete: **60 minutes**
+
+In this exercise you will create a NCM Self Service Blueprint to provision a Rocky Linux VM in a VLAN network.  
+The image (Rocky Linux 9.4), install cloud-init, install packages and join Active Directory (AD) domain.  
+We'll also add a script to remove the computer from the Domain upon deletion.
+
+:::
+
+# Creating Blueprint
+
+1.  Login using the Blueprint Designer.
+
+    ![](images/login-bp-designer.png)
+
+2.  Click on hamburger menu.  Select **Self Service**
+
+    ![](images/AppSwitcher-Self-Service.png)
+
+2.  Click on **Blueprints** from the sidebar and click **+ Create Blueprint**, choose **Single VM Blueprint**.
+
+    ![](images/ncm_linux_ad_1.png)
+
+3. Fill in the following.  Click on **VM Details**
+
+    -  **Name:** Tenant**XYZ**_Rocky_AD  Replace XYZ with your assigned trainee no
+   
+    ![](images/ncm_linux_ad_2.png)
+
+4.  Replace the **VM Name** to **RockyVM**.  Click on **VM Configuration**
+
+    ![](images/ncm_linux_ad_3.png)
+
+5.  Select the cluster
+
+    ![](images/ncm_linux_ad_4.png)
+
+6.  Fill in the following:
+
+    -  **VM Name**: ``r-@@{calm_time}@@``
+    -  **vCPU**: 2 - Check the running man
+    -  **core per CPU**: 1 - Check the running man
+    -  **Memory (GIB)**: 2 - Check the running man
+    -  **VM Power State**: On
+
+     ![](images/ncm_linux_ad_5.png)
+
+7.  Check the **Guest Customization**.  Paste the contents inside the Guest Customization box.
+
+    ```bash    |
+    #cloud-config
+    disable_root: False
+    ssh_enabled: True
+    ssh_pwauth: True
+    users:
+      - name: nutanix
+      passwd: @@{ROCKY 2 Credential.secret}@@
+      chpasswd: { expire: False }
+      ssh-authorized-keys:
+      - @@{ROCKY.public_key}@@
+      sudo: ['ALL=(ALL) NOPASSWD:ALL']
+
+    #cloud-config
+    fqdn: @@{name}@@.@@{domain_name}@@
+    manage_etc_hosts: true
+    hostname: @@{name}@@
+    ```
+
+    ![](images/ncm_linux_ad_6.png)
+
+8.  Choose the **rocky94-calm-template.qcow2** as the disk image.
+
+    ![](images/ncm_linux_ad_7.png)
+
+9.  Choose **Legacy BIOS** for the **Boot Configuration**
+
+    ![](images/ncm_linux_ad_8.png)
+
+10.  Scroll down.  Click on **+** to add a network adapter
+
+    ![](images/ncm_linux_ad_9.png)
+
+11.  Click on **Save**.  
+
+## Create Credential
+
+1.  Click on **Advanced Options (Optional)**
+
+    ![](images/add_credential_1.png)
+
+2.  Click on **Add/Edit Credential**
+
+    ![](images/add_credential_2.png)
+
+3.  Click on **+ Add Credential**
+
+    ![](images/add_credential_3.png)
+
+4.  Fill in the following:
+
+    - **Name**: ROCKY
+    - **Type**: static
+    - **Username**: nutanix
+    - **Secret Type**: SSH Key
+    - **SSH Key**:
+
+     ```bash
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    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
+    -----END OPENSSH PRIVATE KEY-----
+    ```
+
+    ![](images/add_credential_4.png)
+
+5.  Click on **+ Add Credential**.
+
+6.  Fill in the following:
+
+    - **Name**: ROCKY 2 Credential
+    - **Type**: static
+    - **Username**: nutanix
+    - **Secret Type**: Password
+    - **Password**: **Get the password from the trainer**
+
+    ![](images/add_credential_5.png)
+
+7.  Click on **+ Add Credential**.
+
+8.  Fill in the following:
+
+    - **Name**: Domain Administrator
+    - **Type**: static
+    - **Username**: administrator@ntnxlab.local
+    - **Secret Type**: Password
+    - **Password**: **Get the password from the trainer**
+
+## Configure Advanced Optional
+
+1.  Choose the following:
+
+    - **Credential**: ROCKY
+    - **Check Log-in**: checked
+
+    ![](images/ncm_linux_ad_10.png)
+
+2.  Click on **Save**
+
+## Configure Variables
+
+1.  Click on **App Variable**.
+
+    ![](images/app_variable_1.png)
+
+2. Click on **+ Add Variable**
+
+    ![](images/app_variable_2.png)
+
+3.  Fill in the following:
+
+    - **Name**: Domain_Server
+    - **Data Type**: String
+    - **Value**: WIN-2U3E71T1COI
+
+    ![](images/app_variable_3.png)
+
+4.  Fill in the following:
+
+    - **Name**: Domain_Server_IP
+    - **Data Type**: String
+    - **Value**: **Get the IP address from the trainer**.
+
+5.  Click on **+ Add Variable**.  Fill in the following:
+
+    - **Name**: domain_name
+    - **Data Type**: String
+    - **Value**: ntnxlab.local
+
+## Add Package Install Tasks to join AD
+
+Package tasks are executed after the VM is created and cloud-init executed.  Each flavor of Linux Operating 
+System (OS) requires different packges and different steps to join the Active Directory (AD) domain.
+
+1.  Click on **Edit** in **Package Install**
+
+    ![](images/package_install_1.png)
+
+2.  Click on **Add Task**
+
+    ![](images/package_install_2.png)
+
+3.  Fill in the following:  
+
+    - **Task Name**: Installed OS Packages
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    sudo dnf -y update
+    sudo dnf -y install samba-common-tools realmd oddjob oddjob-mkhomedir sssd adcli krb5-workstation
+    ```
+
+    ![](images/package_install_3.png)
+
+4.  Click on **Add Task**
+
+    ![](images/package_install_4.png)
+
+5.  Fill in the following:
+
+    - **Task Name**: Join DNS
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    NODE_HOST=@@{name}@@.@@{domain_name}@@
+    export NODE_HOST
+    echo $NODE_HOST
+
+    sudo hostnamectl set-hostname --static $NODE_HOST
+
+    echo "@@{address}@@ @@{name}@@.@@{domain_name}@@ @@{name}@@" | sudo tee -a /etc/hosts
+    echo "@@{Domain_Server_IP}@@ @@{Domain_Server}@@.@@{domain_name}@@ @@{Domain_Server}@@" | sudo tee -a /etc/hosts
+
+    echo "search @@{domain_name}@@" | sudo tee /etc/resolv.conf
+    echo "nameserver @@{Domain_Server_IP}@@" | sudo tee -a /etc/resolv.conf
+    ```
+
+6.  Click on **Add Task**.  Fill in the following:
+
+    - **Task Name**: Validate DNS Lookup
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**: 
+
+    ```bash
+    sudo dig +short SRV _ldap._tcp.ntnxlab.local
+    sudo dig +short SRV _kerberos._tcp.ntnxlab.local
+    sudo dig +short SRV _kerberos._udp.ntnxlab.local
+    ```
+
+7.  Click on **Add Task**.  Fill in the following:
+
+    - **Task Name**: Validate connection to AD
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    sudo yum install -y nmap-ncat
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 53
+    sudo nc -zuv @@{Domain_Server}@@.@@{domain_name}@@ 53
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 389
+    sudo nc -zuv @@{Domain_Server}@@.@@{domain_name}@@ 389
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 636
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 88
+    sudo nc -zuv @@{Domain_Server}@@.@@{domain_name}@@ 88
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 464
+    sudo nc -zuv @@{Domain_Server}@@.@@{domain_name}@@ 464
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 3268
+    sudo nc -zv @@{Domain_Server}@@.@@{domain_name}@@ 3269
+    sudo nc -zuv @@{Domain_Server}@@.@@{domain_name}@@ 123
+    ```
+
+8.  Click on **Add Task**.  Fill in the following:
+
+    - **Task Name**: Synchronize time with AD
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    sudo chronyc sources
+    sudo systemctl stop chronyd
+    sudo systemctl start chronyd
+    sudo chronyc tracking
+    ```
+
+9.  Click on **Add Task**.  Fill in the following:
+
+    - **Task Name**: Join AD Domain
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    echo "Discovering the domain"
+    sudo realm discover @@{domain_name}@@
+
+    echo "Joining the domain"
+    password=@@{Domain Administrator.secret}@@
+    export password
+    sudo echo $password | sudo realm join @@{Domain_Server}@@.@@{domain_name}@@
+
+    echo "List the domain after joining"
+    sudo /usr/sbin/realm list
+    echo "Permitting all users"
+    sudo realm permit --all
+    ```
+
+## Add Package Uninstall Task to unjoin AD
+
+1.  Click on **Edit** in **Package Uninstall**
+
+    ![](images/package_uninstall_1.png)
+
+2.  Click on **Add Task**
+
+    ![](images/package_uninstall_2.png)
+
+3.  Fill in the following:
+
+    - **Task Name**: Unjoin AD Domain
+    - **Type**: Execute
+    - **Script Type**: Shell
+    - **Credential**: ROCKY
+    - **Script**:
+
+    ```bash
+    password=@@{Domain Administrator.secret}@@
+    export password
+
+    echo "Leaving Active Directory Domain"
+    sudo realm leave @@{Domain_Server}@@.@@{domain_name}@@
+    sudo realm list
+    ```
+
+## Launch the Blueprint
+
+1.  Click on **Launch Blueprint**
+
+    ![](images/launch_bp_1.png)
+
+2.  Fill in the following:
+    
+    - **Application Name**: TenantXYZ-Rocky where XYZ is your initial
+    - **Environment**: You had created the environment earlier
+    
+    ![](images/launch_bp_2.png)
+
+3.  Observe the profile is **default**.  All single VM blueprint has 1 default profile only.
+
+    ![](images/launch_bp_3.png)
+
+4. Observe the VM specification.  Click on **Deploy**
+
+    ![](images/launch_bp_4.png)
+
+5.  Click on **View in Admin Center**
+
+    ![](images/launch_bp_5.png)
+
+6.  The application is in **Provisioning** state.  It will take 3 to 5 mins to complete
+
+    ![](images/launch_bp_6.png)
+
+7.  Click on **Audit**.  Observe the VM was provisioned.  The **Check Log-In** task was successful
+
+    ![](images/launch_bp_7.png)
+
+## Verification
+
+1.  The application is in **Running** state.  Click on **Open Terminal**
+
+    ![](images/launch_bp_8.png)
+
+2.  Click on **Proceed**
+
+    ![](images/verification_1.png)
+
+3.  Key in the following command:
+
+    ```bash
+    nslookup vmname
+    ```
+
+    ![](images/verification_2.png)
+
+4.  Click on **Manage** in the application.  Single VM blueprint allows the installation of NGT for Day 2 Operation
+
+    ![](images/verification_3.png)
+
+5.  Click on **Metrics** to view the CPU, Memory, Storage & Network utilization of the VM
+
+    ![](images/verification_4.png)
+
+
+

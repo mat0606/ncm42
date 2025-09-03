@@ -20,6 +20,14 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'NCM Marketplace',
+      items: ['ncm_marketplace2/ncm_marketplace2',  
+              'ncm_marketplace2/ncm_publish_blueprint',
+              'ncm_marketplace2/ncm_consume_wordpress',                        
+            ],
+    },
+    {
+      type: 'category',
       label: 'NCM Self Service',
       items: ['what_is_calm/what_is_calm',
               'what_is_calm/blueprint',
@@ -27,13 +35,6 @@ module.exports = {
               'what_is_calm/runbook',                                      
             ],
     },
-    {
-      type: 'category',
-      label: 'NCM Marketplace',
-      items: ['ncm_marketplace2/ncm_marketplace2',  
-              'ncm_marketplace2/ncm_publish_blueprint',
-              'ncm_marketplace2/ncm_consume_wordpress',                        
-            ],
-    },
+    
   ],
 };

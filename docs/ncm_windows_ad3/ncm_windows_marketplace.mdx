@@ -1,0 +1,147 @@
+---
+title: "Windows Workload: Publish Blueprint to Marketplace"
+---
+
+# Product Configurations:
+
+1.  Calm VM 3.8.0 on PC2024.1
+2.  Infrastructure cluster on AOS 6.8.0.5 on PC2024.1.01
+
+# Overview
+
+:::info
+
+Estimated time to complete: **30 minutes**
+
+Publishing the blueprint to the Marketplace marked a logical milestone of the blueprint development lifecycle. 
+The marketplace blueprint undergoes an approval process.  An user with self service admin role can approve the 
+marketplac blueprint.  Once approved, it is ready in the production for users to consume.
+
+:::
+
+# Publish Blueprint
+
+1.  Login as the Blueprint Designer
+
+    ![](images/login-bp-designer.png)
+
+2.  Click on hamburger menu.  Select **Self Service**
+
+    ![](images/AppSwitcher-Self-Service.png)
+
+3.  Drill into the **Windows** blueprint created earlier.
+
+    ![](images/blueprint_list.png)
+
+4.  Click on **Publish**
+
+    ![](images/publish_blueprint_1.png)
+
+5.  Fill in the following.  Click on **Submit for Approval**
+
+    - **Name**: Tenant**xyz**-Windows-2022
+    - **Publish with secret**: checked
+    - **Initial version**: 1.0
+    - **Picture**: Optional
+
+     ![](images/publish_blueprint_2.png)
+
+# Approve blueprint in Marketplace Manager
+
+1.  Login as Self Service Admin
+
+    ![](images/sspadmin_1.png)
+
+2.  Click on hamburger menu.  Select **Self Service**
+
+    ![](images/AppSwitcher-Self-Service.png)
+
+3.  Click on **Marketplace Manager**
+
+    ![](images/sspadmin_2.png)
+
+4.  Click on **Approval Pending**
+
+    ![](images/sspadmin_3.png)
+
+5.  Drill into the Marketplace name
+
+    ![](images/sspadmin_4.png)
+
+6.  Choose the following:
+
+    - **Category**: BI-Productivity
+    - **Project shared with**: **Choose your own project**
+
+    ![](images/sspadmin_5.png)
+
+7.  Click on the **Approve** as shown in the picture
+
+    ![](images/sspadmin_6.png)
+
+# Publish Marketplace Item to Marketplace
+
+1.  Click on **Approved**
+
+    ![](images/sspadmin_7.png)
+
+8.  Filter by **Tenant**xyz.  Click on **Marketplace Name**
+
+    ![](images/sspadmin_8.png)
+
+9.  Click on **Publish**
+
+    ![](images/sspadmin_9.png)
+
+# Consume IaaS in Marketplace
+
+1.  Login as tenant**XYZ**developer@ntnxlab.local user.  Replace XYZ with your assigned no.
+
+    ![](images/marketplace-launch-1.png)
+
+2.  Click on hamburger menu.  Click on **Apps and Marketplace**
+
+    ![](images/marketplace-launch-2.png)
+
+3.  Click on **Marketplace**
+
+    ![](images/marketplace-launch-3.png)
+
+4.  Click on **Get** for **"Tenantxyz-Windows-2022'**.  Replace xyz with your initial
+
+    ![](images/iaas_windows_1.png)
+
+5.  Click on **Deploy**
+
+    ![](images/iaas_windows_2.png)
+
+6.  Fill in the following:
+
+    -  **Application Name** -  Specify a unique name (e.g. Windows-*INITIALS*-1)
+    -  **Project** - Select the project
+    -  **Environment** - Select the Environment
+
+    ![](images/Launch-App-1.png)  
+
+7.  Select the **Application Profile**: **Small**
+
+    ![](images/Launch-App-2.png)  
+
+8.  Scroll down.  Verify the VM sizing.  
+
+    ![](images/Launch-App-3.png) 
+
+9.  Scroll down.  Verify the credential for the **DOMAIN_CRED**.  
+
+    ![](images/Launch-App-3-2.png) 
+
+10.  Scroll down.  Verify the Snapshot Policy for the project.
+
+    ![](images/Launch_Snapshot.png) 
+
+11.  Click on **View in Admin Center**
+
+    ![](images/Launch-App-4.png) 
+
+12.  Wait till the application is in the **Running** state. 
+

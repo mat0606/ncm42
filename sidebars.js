@@ -35,6 +35,13 @@ module.exports = {
               'what_is_calm/runbook',                                      
             ],
     },
+    {
+      type: 'category',
+      label: 'NCM Develop Blueprint',
+      items: ['ncm_wordpress/ncm_wordpress',  
+             ],
+    },
+    
     
   ],
 };

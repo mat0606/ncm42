@@ -23,7 +23,8 @@ module.exports = {
       label: 'NCM Marketplace',
       items: ['ncm_marketplace2/ncm_marketplace2',  
               'ncm_marketplace2/ncm_publish_blueprint',
-              'ncm_marketplace2/ncm_consume_wordpress',                        
+              'ncm_marketplace2/ncm_consume_wordpress',
+              'ncm_marketplace2/ncm_publish_iaas_blueprint',                          
             ],
     },
     {
@@ -37,7 +38,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'NCM Develop Blueprint',
+      label: 'NCM Tenant Blueprint',
       items: ['ncm_wordpress/ncm_wordpress',  
              ],
     },

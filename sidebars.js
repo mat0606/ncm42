@@ -24,7 +24,8 @@ module.exports = {
       items: ['ncm_marketplace2/ncm_marketplace2',  
               'ncm_marketplace2/ncm_publish_blueprint',
               'ncm_marketplace2/ncm_consume_wordpress',
-              'ncm_marketplace2/ncm_publish_iaas_blueprint',                          
+              'ncm_marketplace2/ncm_publish_iaas_blueprint',
+              'ncm_marketplace2/ncm_consume_iaas_rhel'                          
             ],
     },
     {
